@@ -5,7 +5,9 @@ void print(int array[size]);
 
 int linsearch(int array[size], int x);
 int binarysearch(int array[size], int x);
-int bubblesort(int array[size]);
+int bubbleSort(int array[size]);
+int insertionSort(int array[size]);
+
 void swap(int * a, int* b);
 
 
@@ -19,7 +21,9 @@ int main(){
   scanf("%d", &x);
   printf(" \n Item %d found in array at position %d \n", x, linsearch(array, x));
   printf("\n Enter a number to search in unsorted\n");
-  bubblesort(unsorted);
+  print(unsorted);
+  insertionSort(unsorted);
+  // bubbleSort(unsorted);
   // unsorted has been sorted // 
   print(unsorted);
   scanf("%d", &x);
@@ -66,7 +70,7 @@ int binarysearch(int array[size], int x)
 }
 
 
-int bubblesort(int array[size]){
+int bubbleSort(int array[size]){
   for (int i=0;i<size;i++)
     for (int j=0;j<size-1;j++)
       if (array[j+1] < array[j])
@@ -74,6 +78,33 @@ int bubblesort(int array[size]){
   return 0;
 }
 
+
+int insertionSort(int array[size]){
+  int i, j, temp, empty,k;
+  for(i=1;i<size;i++)
+  {
+    temp = array[i];
+    printf("\n after inserting %d :", temp);
+    empty = i;
+    for(j=i-1;j>=0;j--)
+    {
+      if(temp < array[j])
+      {
+        //shift element to the right
+        array[j+1] = array[j];
+        //update empty position
+        empty = j;
+      }
+    }
+    //insert at the proper location
+    array[empty] = temp;
+    print(array); 
+  }
+
+  printf("sorted array: \n");
+  print(array); 
+  return 0;
+}
 
 
 void swap(int * a, int* b){
